@@ -12,7 +12,9 @@ app.displayDialogs = DialogModes.NO;
 var OUTDIR = __OUTDIR__;
 var TASK = __TASKNAME__;
 var P = __PARAMS__;
-var out = { task: TASK, params: P, steps: [], snapshots: [], exports: [], errors: [], na: [] };
+var out = { task: TASK, params: P, steps: [], snapshots: [], exports: [], errors: [], na: [],
+            decisions: [] };   // D14: each autonomous decision pushed as {what, why, confidence}
+function decide(what, why, confidence) { out.decisions.push({ what: what, why: why, confidence: confidence }); }
 function step(n, f) {
     try { out.steps.push(n + "=" + String(f())); return true; }
     catch (e) { out.errors.push(n + ":" + e); return false; }

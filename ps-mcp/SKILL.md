@@ -9,7 +9,7 @@ description: >
   需要本机装有 Adobe Photoshop（2026 27.10 实测，Windows）。
 metadata:
   author: misdeep
-  version: "0.7.1"
+  version: "0.8.0"
   verified_on: "Adobe Photoshop 2026 27.10 (20260824.r.26) + Windows 中文 UI；COM 通道与建档/导出/回读全链路当日实测；F 模式与 UXP 路线为文献级未实测"
 ---
 
@@ -64,6 +64,11 @@ metadata:
    标 △，禁止以分辨率不足的视图宣告质量。**△ 出口**：视觉通道不可用（无图像输入/
    图像服务失败/内容超分辨率极限）时，该阶段视觉义务标 △+原因，降级为数字通道+用户
    确认——△ 是合法出口，静默省略不是。
+9. **自决策留痕与降级**：AI 在流程中的每个自主决策（选方法/定参数/门降档/取经验）
+   必须以（选择，依据，置信度）三元组记录进 report 的 decisions 节，依据必须指认
+   证据（所见/机查/条目 ID/实测先例）；置信度不足时，决策降级为提问用户；门的存在
+   性、源文件安全、晋升标准、深度档、隐私与系统状态五类**不可自决**。细则见
+   [05-decision.md](references/05-decision.md)。
 
 ## 2. 阶段门（修图管线——数字与视觉双通道）
 
@@ -92,6 +97,7 @@ metadata:
 | 需求不清/一句话任务 | [00-task-intake.md](references/00-task-intake.md) | 两段式 intake + 修图深度档 |
 | 盘点/图层/选区/色彩/副本编辑 | [02-document-layers.md](references/02-document-layers.md) | AGENT_ 副本+快照先行+profile 机验 |
 | 修图/合成工艺（先修什么/融合顺序） | [03-retouch-craft.md](references/03-retouch-craft.md) | 待实战回填——不预写 |
+| 自决策/检查计划/置信度规则 | [05-decision.md](references/05-decision.md) | 决策三元组+三档置信度+五类红线 |
 | 导出/格式/profile 转换/回读核验 | [04-delivery.md](references/04-delivery.md) | 白名单+成图回读 |
 
 ## 4. 导出实看义务（全家族最强验证闭环，别浪费）
@@ -127,6 +133,6 @@ PS 的一切皆可导出实看：整图低分辨率 PNG（阶段 checkpoint）�
   `.toSource()` 经 COM 返回；F 模式 `File.write` 落盘 report JSON）。
 - **report 最小字段**：模式、文档清单（名/尺寸/模式/profile）、图层树摘要（大文档按组
   分页）、本次操作逐项结果、快照与产物路径、错误与 N/A 项、**实看清单**（瓦片/对比图
-  文件名——与文件系统互证）。
+  文件名——与文件系统互证）、**decisions 节**（每个自主决策的三元组，见铁律 9）。
 - **验收宣告行**：交付消息必须含 G0/G1/G3/G4 逐项结果（✓/△/N/A+理由）。
 - 版本语义与治理（指纹/台账/发布四查）见 `evals/`；修订语义定义时全包 grep 同步。

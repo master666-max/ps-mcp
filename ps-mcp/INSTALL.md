@@ -1,4 +1,4 @@
-# INSTALL — ps-mcp v0.7.1（Photoshop 桌面驱动 skill 安装与运行要求）
+# INSTALL — ps-mcp v0.8.0（Photoshop 桌面驱动 skill 安装与运行要求）
 
 ## 前置要求（本 skill 是知识包，不是安装包）
 
