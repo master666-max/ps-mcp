@@ -3,7 +3,7 @@ name: ps-mcp
 description: >
   通过 COM（Photoshop.Application + DoJavaScript）驱动真实运行的 Adobe Photoshop：
   文档盘点（图层树/尺寸/模式/色彩配置文件）、AGENT_ 副本文档编辑、选区与填充、
-  智能对象清单、导出 PNG/PSD 与成图回读核验。每当用户提到 Photoshop/PS/修图/合成/
+  智能对象清单、导出 PNG/PSD 与成图回读核验。不适用：GIMP/Krita/其他图像软件（非 COM 通道）与纯设计建议（不落 PS 实操）。每当用户提到 Photoshop/PS/修图/合成/
   图层/抠图/调色/滤镜/智能对象/批量处理/导出 PSD 时使用本 skill——即使用户没有明说
   "Photoshop"。本机若 COM 连不上而 PS 进程在，自动切换"JSX 文件总线模式"（F 模式）。
   需要本机装有 Adobe Photoshop（2026 27.10 实测，Windows）。
@@ -18,6 +18,11 @@ metadata:
 本手册驱动真实运行的 Photoshop。事实标注体系：【✓实测】=本机真机验证过；
 【△文献】=官方/社区文档或同族经验，未本机复验；【✗待实测】=尚未验证，使用前先探。
 首次实测任何【✗待实测】条目后必须回写标注。
+
+## 使用边界（触发校准）
+
+- 触发：用户要求操作真实运行中的 Photoshop（修图/合成/图层/导出）→ 用本技能
+- 不触发：GIMP/Krita → 其他工具；只要设计建议不实操 → 直接回答
 
 ## 0. 模式判定与连接自检（每次会话必做）
 
